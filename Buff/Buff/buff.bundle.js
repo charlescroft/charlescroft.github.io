@@ -42767,10 +42767,8 @@ class Buff {
 
         // 语音播报
         if (this.options.BigBuffNoticeTTSOn == true && this.info.tts != null && this.info.tts != '') {
-          (0,overlay_plugin_api/* callOverlayHandler */.tK)({
-            call: 'cactbotSay',
-            text: this.info.tts
-          });
+          const _localTTS = new Localtts();
+          _localTTS.say(this.options.DotNoticeTTS);
         }
         if (seconds > 0) {
           aura.removeTimeout = window.setTimeout(() => {
