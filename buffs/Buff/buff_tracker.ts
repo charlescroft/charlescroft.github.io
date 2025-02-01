@@ -11,6 +11,7 @@ import {callOverlayHandler} from "../cactbot/resources/overlay_plugin_api";
 import {BuffInfo,BuffInfoList} from "./buff_info";
 import {Job} from "../cactbot/types/job";
 import {FfxivVersion} from "./buff";
+import LocalTTS from './local_tts';
 
 
 export interface Aura {
@@ -189,7 +190,9 @@ export class Buff {
 
         // 语音播报
         if (this.options.BigBuffNoticeTTSOn == true && this.info.tts != null && this.info.tts != '') {
-          callOverlayHandler({call: 'cactbotSay',text: this.info.tts});
+          //callOverlayHandler({call: 'cactbotSay',text: this.info.tts});
+          const _localTTS = new LocalTTS();
+          _localTTS.say(this.options.DotNoticeTTS);
         }
 
         if (seconds > 0) {

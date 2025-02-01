@@ -5,6 +5,8 @@ import {DotInfo, DotInfoList} from "./dot_info";
 import {NetMatches} from "../cactbot/types/net_matches";
 import { makeAuraDotTimerIcon } from "./utils";
 import {callOverlayHandler} from "../cactbot/resources/overlay_plugin_api";
+import LocalTTS from "./local_tts"
+
 
 export interface Aura {
     addCallback: () => void;
@@ -63,7 +65,9 @@ export class Dot {
                 }
             },
             noticeCallback: () => {
-                callOverlayHandler({call: 'cactbotSay', text: this.options.DotNoticeTTS});
+                //callOverlayHandler({call: 'cactbotSay', text: this.options.DotNoticeTTS});
+                const _localTTS = new LocalTTS();
+                _localTTS.say(this.options.DotNoticeTTS);
             },
 
             addCallback: () => {
