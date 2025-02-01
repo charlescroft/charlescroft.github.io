@@ -43165,7 +43165,7 @@ class Localtts {
     // 设置默认语音参数
     this.msg.lang = "zh-CN";  // 使用的语言:中文
     this.msg.volume = 1.0;    // 声音音量：0-1
-    this.msg.rate = 1.4;      // 语速：0-10
+    this.msg.rate = 1.0;      // 语速：0-10
     this.msg.pitch = 1.0;     // 音高：0-1
   }
 
