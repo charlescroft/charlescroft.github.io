@@ -43160,18 +43160,20 @@ class DotInfoList {
 
 class Localtts {
   constructor() {
-    this.synth = window.speechSynthesis;
-    this.msg = new SpeechSynthesisUtterance();
-    // 设置默认语音参数
-    this.msg.lang = "zh-CN";  // 使用的语言:中文
-    this.msg.volume = 1.0;    // 声音音量：0-1
-    this.msg.rate = 1.0;      // 语速：0-10
-    this.msg.pitch = 1.0;     // 音高：0-1
+    this.synth = window.speechSynthesis;  
   }
 
   say(text) {
-    this.msg.text = text; // 更新要朗读的文本
-    this.synth.speak(this.msg); 
+    // 先停止当前朗读，避免语音重叠
+    this.synth.cancel(); 
+    const msg = new SpeechSynthesisUtterance(text);
+    // 设置默认语音参数
+    msg.lang = "zh-CN";  // 使用的语言:中文
+    msg.volume = 1.0;    // 声音音量：0-1
+    msg.rate = 1.0;      // 语速：0-10
+    msg.pitch = 1.0;     // 音高：0-1
+
+    this.synth.speak(msg);  
   }
 }
 
