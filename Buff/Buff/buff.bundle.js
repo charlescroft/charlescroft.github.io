@@ -43163,7 +43163,6 @@ class Localtts {
 
   say(text) {
     // 先停止当前朗读，避免语音重叠
-    this.synth.cancel(); 
     const msg = new SpeechSynthesisUtterance(text);
     // 设置默认语音参数
     msg.lang = "zh-CN";  // 使用的语言:中文
