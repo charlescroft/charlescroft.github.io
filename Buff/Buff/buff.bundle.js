@@ -42767,8 +42767,15 @@ class Buff {
 
         // 语音播报
         if (this.options.BigBuffNoticeTTSOn == true && this.info.tts != null && this.info.tts != '') {
-          const _localTTS = new Localtts();
-          _localTTS.say(this.options.DotNoticeTTS);
+          if (navigator.userAgent.includes("Windows")){
+            (0,overlay_plugin_api/* callOverlayHandler */.tK)({
+              call: 'cactbotSay',
+              text: this.info.tts
+            });
+          } else {
+            const _localTTS = new Localtts();
+            _localTTS.say(this.info.tts);
+          }
         }
         if (seconds > 0) {
           aura.removeTimeout = window.setTimeout(() => {
@@ -43202,8 +43209,15 @@ class Dot {
         }
       },
       noticeCallback: () => {
-        const _localTTS = new Localtts();
-        _localTTS.say(this.options.DotNoticeTTS);
+        if (navigator.userAgent.includes("Windows")){
+          (0,overlay_plugin_api/* callOverlayHandler */.tK)({
+            call: 'cactbotSay',
+            text: this.options.DotNoticeTTS
+          });
+        } else {
+          const _localTTS = new Localtts();
+          _localTTS.say(this.options.DotNoticeTTS);
+        }
       },
       addCallback: () => {
         const elem = makeAuraDotTimerIcon(key, seconds, opacity, this.options.DotIconWidth, this.options.DotIconHeight, txt, this.options.DotBarHeight, 0, textColor, this.options.DotBorderSize, this.info.borderColor, this.info.borderColor, this.info.icon, this.info);
