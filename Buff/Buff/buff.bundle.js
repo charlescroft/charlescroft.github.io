@@ -43617,7 +43617,7 @@ function rewriteOption(options) {
   }
   // 团辅 tts
   const buffttsOn = decodeURI(getQueryVariable('bufftts'));
-  if (uttsOn === '0') {
+  if (buffttsOn === '0') {
     options.BigBuffNoticeTTSOn = false;
   }
   // 小于多少秒提醒
