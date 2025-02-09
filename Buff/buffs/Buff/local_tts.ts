@@ -6,10 +6,6 @@ class LocalTTS {
     }
 
     public say(text: string): void {
-
-        // 先停止当前朗读，避免语音重叠
-        this.synth.cancel(); 
-
         const msg = new SpeechSynthesisUtterance(text);
         msg.lang = "zh-CN"; //TODO: Get lang from cactbot
         msg.volume = 1.0;

@@ -65,9 +65,12 @@ export class Dot {
                 }
             },
             noticeCallback: () => {
-                //callOverlayHandler({call: 'cactbotSay', text: this.options.DotNoticeTTS});
-                const _localTTS = new LocalTTS();
-                _localTTS.say(this.options.DotNoticeTTS);
+                if (navigator.userAgent.includes("Windows")){
+                    callOverlayHandler({call: 'cactbotSay', text: this.options.DotNoticeTTS});
+                } else {
+                    const _localTTS = new LocalTTS();
+                    _localTTS.say(this.options.DotNoticeTTS);
+                }
             },
 
             addCallback: () => {

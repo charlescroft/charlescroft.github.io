@@ -190,9 +190,12 @@ export class Buff {
 
         // 语音播报
         if (this.options.BigBuffNoticeTTSOn == true && this.info.tts != null && this.info.tts != '') {
-          //callOverlayHandler({call: 'cactbotSay',text: this.info.tts});
-          const _localTTS = new LocalTTS();
-          _localTTS.say(this.options.DotNoticeTTS);
+          if (navigator.userAgent.includes("Windows")){
+            callOverlayHandler({call: 'cactbotSay',text: this.info.tts});
+          } else {
+            const _localTTS = new LocalTTS();
+            _localTTS.say(this.info.tts);
+          }
         }
 
         if (seconds > 0) {
