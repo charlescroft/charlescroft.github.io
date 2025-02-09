@@ -43604,6 +43604,11 @@ function rewriteOption(options) {
     options.BigBuffNoticeTTSOn = false;
     options.DotNoticeTTSOn = false;
   }
+  // 团辅 tts
+  const buffttsOn = decodeURI(getQueryVariable('bufftts'));
+  if (uttsOn === '0') {
+    options.BigBuffNoticeTTSOn = false;
+  }
   // 小于多少秒提醒
   const uDotNoticeLess = decodeURI(getQueryVariable('dotnoticeless'));
   if (uDotNoticeLess != '') {
